@@ -2,6 +2,11 @@
 html: run-rippled-as-a-validator.html
 parent: configure-rippled.html
 blurb: Have your server vote on the consensus ledger.
+labels:
+  - Core Server
+  - Blockchain
+top_nav_grouping: Popular Pages
+top_nav_name: Join UNL
 ---
 # Run rippled as a Validator
 
@@ -23,7 +28,7 @@ Even if your validator isn't a _trusted_ validator, it stills plays an important
 
 ## 1. Understand the traits of a good validator
 
-Strive to have your validator always embody the following properties. Being a good validator helps `rippled` server operators and validator list publishers, such as [https://vl.ripple.com](https://vl.ripple.com), to trust your validator before adding it to their UNLs.
+Strive to have your validator always embody the following properties. Being a good validator helps `rippled` server operators and validator list publishers, such as [https://vl.ripple.com](https://vl.ripple.com) and [https://vl.xrplf.org](https://vl.xrplf.org), to trust your validator before adding it to their UNLs.
 
 - **Available**
 
@@ -159,7 +164,7 @@ _**To connect your validator to the XRP Ledger network using proxies:**_
 
     - Inbound traffic: Only from IP addresses of the stock `rippled` servers in the cluster you configured.
 
-    - Outbound traffic: Only to the IP addresses of the stock `rippled` servers in the cluster you configured and to <https://vl.ripple.com> through port 443.
+    - Outbound traffic: Only to the IP addresses of the stock `rippled` servers in the cluster you configured and to your UNL list providers through port 443.
 
 5. Restart `rippled`.
 

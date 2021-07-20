@@ -2,6 +2,16 @@
 html: serialization.html
 parent: protocol-reference.html
 blurb: Conversion between JSON and canonical binary format for XRP Ledger transactions and other objects.
+labels:
+  - Blockchain
+  - Transaction Sending
+curated_anchors:
+  - name: Sample Code
+    anchor: "#sample-code"
+  - name: Canonical Field Order
+    anchor: "#canonical-field-order"
+  - name: Type List
+    anchor: "#type-list"
 ---
 # Serialization Format
 [[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")
@@ -56,7 +66,7 @@ Additionally, the following libraries also provide serialization support:
 
 {% include '_snippets/libs-snippet.md' %}
 
-These implementations are all provided with permissive open-source licenses, so you can import, use, or adapt the code for your needs in addition to using it alongside these documents for learning purposes.
+These implementations are all provided with permissive open-source licenses, so you can import, use, or adapt the code for your needs.
 
 
 

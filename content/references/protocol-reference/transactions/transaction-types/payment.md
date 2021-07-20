@@ -2,6 +2,11 @@
 html: payment.html
 parent: transaction-types.html
 blurb: Send funds from one account to another.
+labels:
+  - Payments
+  - XRP
+  - Cross-Currency
+  - Tokens
 ---
 # Payment
 [[Source]](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "Source")
@@ -114,7 +119,7 @@ For more information, see the full article on [Partial Payments](partial-payment
 
 ## Limit Quality
 
-The XRP Ledger defines the "quality" of a currency exchange as the ratio of the numeric amount in to the numeric amount out. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is `0.5`.
+The XRP Ledger defines the "quality" of a currency exchange as the ratio of the numeric amount in to the numeric amount out. For example, if you spend $2 USD to receive £1 GBP, then the "quality" of that exchange is `0.5`. <!-- SPELLING_IGNORE: GBP -->
 
 The [`tfLimitQuality` flag](#payment-flags) allows you to set a minimum quality of conversions that you are willing to take. This limit quality is defined as the destination `Amount` divided by the `SendMax` amount (the numeric amounts only, regardless of currency). When set, the payment processing engine avoids using any paths whose quality (conversion rate) is worse (numerically lower) than the limit quality.
 

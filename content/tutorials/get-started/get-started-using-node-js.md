@@ -2,6 +2,11 @@
 html: get-started-using-node-js.html
 parent: get-started.html
 blurb: Build an entry-level JavaScript application for querying the XRP Ledger in Node.js.
+top_nav_name: JavaScript
+top_nav_grouping: Get Started
+labels:
+  - Development
+showcase_icon: assets/img/logos/javascript.svg
 ---
 # Get Started Using Node.js
 
@@ -277,7 +282,7 @@ _jsDelivr_
 
 Instead of using Node.js's "require" syntax, the browser version creates a global variable named `ripple`, which contains the `RippleAPI` class.
 
-<!-- SPELLING_IGNORE: lodash -->
+<!-- SPELLING_IGNORE: lodash, unpkg, jsdelivr -->
 
 
 ## Build a Browser-Compatible Version of RippleAPI

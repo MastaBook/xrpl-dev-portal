@@ -2,6 +2,8 @@
 html: understanding-log-messages.html
 parent: troubleshoot-the-rippled-server.html
 blurb: Interpret and respond to warning and error messages in the debug log.
+labels:
+  - Core Server
 ---
 # Understanding Log Messages
 
@@ -298,6 +300,7 @@ Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1
 
 
 ## [veto_amendments] section in config file ignored
+<!-- SPELLING_IGNORE: veto_amendments -->
 
 Log messages such as the following occur when  your `rippled.cfg` file contains a legacy `[veto_amendments]` stanza. The first time the server starts on version 1.7.0 or higher, it reads the stanza to set amendment votes; on later restarts, it ignores the `[amendments]` and `[veto_amendments]` stanzas and prints this message instead.
 

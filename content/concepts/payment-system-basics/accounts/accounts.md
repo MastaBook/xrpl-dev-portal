@@ -2,6 +2,9 @@
 html: accounts.html
 parent: payment-system-basics.html
 blurb: Learn about accounts in the XRP Ledger. Accounts can send transactions and hold XRP.
+labels:
+  - Accounts
+  - Payments
 ---
 # Accounts
 
@@ -50,6 +53,7 @@ For more technical details of how to calculate an XRP Ledger address, see [Addre
 ### Special Addresses
 
 Some addresses have special meaning, or historical uses, in the XRP Ledger. In many cases, these are "black hole" addresses, meaning the address is not derived from a known secret key. Since it is effectively impossible to guess a secret key from only an address, any XRP possessed by black hole addresses is lost forever.
+
 
 | Address                       | Name | Meaning | Black Hole? |
 |-------------------------------|------|---------|-------------|

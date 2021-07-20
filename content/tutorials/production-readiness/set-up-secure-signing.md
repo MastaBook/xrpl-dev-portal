@@ -2,6 +2,9 @@
 html: set-up-secure-signing.html
 parent: production-readiness.html
 blurb: Set up an environment where you can submit transactions securely.
+labels:
+  - Security
+  - Development
 ---
 # Set Up Secure Signing
 
@@ -148,7 +151,7 @@ To use this configuration, follow the steps for [running `rippled` on a private 
     - [sign method][]
     - [submit method][]
     - [RippleAPI Reference](rippleapi-reference.html)
-    - [xrpl-py Reference](https://xrpl-py.readthedocs.io/en/latest/index.html)
+    - [`xrpl-py` Reference](https://xrpl-py.readthedocs.io/en/latest/index.html)
 
 
 
