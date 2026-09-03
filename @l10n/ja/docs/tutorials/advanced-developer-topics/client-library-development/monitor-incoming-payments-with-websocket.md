@@ -10,7 +10,7 @@ labels:
 ---
 # WebSocketを使用した着信ペイメントの監視
 
-このチュートリアルでは、[WebSocket `rippled` API](../../../references/http-websocket-apis/index.md)を使用して、着信[ペイメント](../../../concepts/payment-types/index.md)を監視する方法を説明します。すべてのXRP Ledgerトランザクションは公開されているため、誰もが任意のアドレスへの着信ペイメントを監視できます。
+このチュートリアルでは、[WebSocket `xrpld` API](../../../references/http-websocket-apis/index.md)を使用して、着信[ペイメント](../../../concepts/payment-types/index.md)を監視する方法を説明します。すべてのXRP Ledgerトランザクションは公開されているため、誰もが任意のアドレスへの着信ペイメントを監視できます。
 
 WebSocketは、クライアントとサーバが1つの接続を確立し、その接続を経由して両方向にメッセージを送信するモデルに従います。この接続は、明示的に閉じる（または接続に障害が発生する）まで続きます。これは、リクエストごとにクライアントが新しい接続を開いて閉じるHTTPベースのAPIモデル（JSON-RPCやRESTful APIなど）とは対照的です[¹](#footnote-1)<a id="from-footnote-1"></a>。
 
@@ -19,12 +19,12 @@ WebSocketは、クライアントとサーバが1つの接続を確立し、そ�
 ## 前提条件
 
 - このページの例では、すべての主要な最新ブラウザーで使用できるJavaScriptおよびWebSocketプロトコルを使用しています。JavaScriptにある程度習熟し、WebSocketクライアントを使用する他のプログラミング言語の専門知識があれば、選択する言語に手順を適合させながら進めていくことができます。
-- 安定したインターネット接続と`rippled`サーバへアクセスが必要です。埋め込まれている例では、Rippleの公開サーバのプールに接続します。[独自の`rippled`サーバを運用](../../../infrastructure/installation/index.md)する場合は、ローカルでそのサーバに接続することもできます。
+- 安定したインターネット接続と`xrpld`サーバへアクセスが必要です。埋め込まれている例では、Rippleの公開サーバのプールに接続します。[独自の`xrpld`サーバを運用](../../../infrastructure/installation/index.md)する場合は、ローカルでそのサーバに接続することもできます。
 - 丸め方によるエラーを発生させることなくXRPの価値を適切に処理するには、64ビット符号なし整数で計算できる数値タイプを使用できる必要があります。このチュートリアルの例では、[big.js](https://github.com/MikeMcl/big.js/)を使用しています。[トークン](../../../concepts/tokens/index.md)を使用する場合は、さらに高い精度が求められます。詳細は、[通貨の精度](../../../references/protocol/data-types/currency-formats.md#xrpの精度)をご覧ください。
 
 <!-- Helper for interactive tutorial breadcrumbs -->
-<script type="application/javascript" src="/vendor/big.min.js"></script>
-<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" defer src="/vendor/big.min.js"></script>
+<script type="application/javascript" defer src="/js/interactive-tutorial.js"></script>
 <script type="application/javascript">
 // Helper stuff for this interactive tutorial specifically
 
@@ -39,7 +39,7 @@ function writeToConsole(console_selector, message) {
 
 ## 1. XRP Ledgerへの接続
 
-着信ペイメントを監視する最初のステップとして、XRP Ledger、つまり`rippled`サーバに接続します。
+着信ペイメントを監視する最初のステップとして、XRP Ledger、つまり`xrpld`サーバに接続します。
 
 以下のJavaScriptコードでは、Rippleの公開サーバのクラスターの1つに接続します。その後、コンソールにメッセージを記録し、[pingメソッド][]を使用してリクエストを送信します。次に、サーバ側からのメッセージを受信するときに、ハンドラーを設定してコンソールに再度メッセージを記録します。
 
@@ -64,13 +64,13 @@ socket.addEventListener('close', (event) => {
 })
 ```
 
-上記の例では、[Test Net](/resources/dev-tools/xrp-faucets)上にあるRippleの公開APIサーバの1つに対して、安全な接続（`wss://`）を開きます。代わりにデフォルトの構成を使用してローカルで運用している`rippled`サーバに接続するには、最初の行に以下を使用して、ローカルのポート**6006**で _安全ではない_ 接続（`ws://`）を開きます。
+上記の例では、[Test Net](/resources/dev-tools/xrp-faucets)上にあるRippleの公開APIサーバの1つに対して、安全な接続（`wss://`）を開きます。代わりにデフォルトの構成を使用してローカルで運用している`xrpld`サーバに接続するには、最初の行に以下を使用して、ローカルのポート**6006**で _安全ではない_ 接続（`ws://`）を開きます。
 
 ```js
 const socket = new WebSocket('ws://localhost:6006')
 ```
 
-{% admonition type="success" name="ヒント" %}デフォルトでは、ローカル`rippled`サーバに接続することで、インターネット上の公開サーバに接続する際に使用できる[パブリックメソッド](../../../references/http-websocket-apis/public-api-methods/index.md)以外に、すべての[管理メソッド](../../../references/http-websocket-apis/admin-api-methods/index.md)と、[server_info][server_infoメソッド]などの一部のレスポンスに含まれる管理者専用データを利用できます。{% /admonition %}
+{% admonition type="success" name="ヒント" %}デフォルトでは、ローカル`xrpld`サーバに接続することで、インターネット上の公開サーバに接続する際に使用できる[パブリックメソッド](../../../references/http-websocket-apis/public-api-methods/index.md)以外に、すべての[管理メソッド](../../../references/http-websocket-apis/admin-api-methods/index.md)と、[server_info][server_infoメソッド]などの一部のレスポンスに含まれる管理者専用データを利用できます。{% /admonition %}
 
 例:
 
@@ -116,7 +116,7 @@ $("#connect-socket-button").click((event) => {
 
 ## 2. ハンドラーへの着信メッセージのディスパッチ
 
-WebSocket接続では、複数のメッセージをどちらの方向にも送信することが可能で、リクエストとレスポンスの間に厳密な1:1の相互関係がないため、各着信メッセージに対応する処理を識別する必要があります。この処理をコーディングする際の優れたモデルとして、「ディスパッチャー」関数の設定が挙げられます。この関数は着信メッセージを読み取り、各メッセージを正しいコードのパスに中継して処理します。メッセージを適切にディスパッチできるように、`rippled`サーバでは、すべてのWebSocketメッセージで`type`フィールドを使用できます。
+WebSocket接続では、複数のメッセージをどちらの方向にも送信することが可能で、リクエストとレスポンスの間に厳密な1:1の相互関係がないため、各着信メッセージに対応する処理を識別する必要があります。この処理をコーディングする際の優れたモデルとして、「ディスパッチャー」関数の設定が挙げられます。この関数は着信メッセージを読み取り、各メッセージを正しいコードのパスに中継して処理します。メッセージを適切にディスパッチできるように、`xrpld`サーバでは、すべてのWebSocketメッセージで`type`フィールドを使用できます。
 
 - クライアント側からのリクエストへの直接のレスポンスとなるメッセージの場合、`type`は文字列の`response`です。この場合、サーバは以下も提供します。
 
@@ -481,7 +481,7 @@ $("#tx_read").click((event) => {
 
 ## その他のプログラミング言語
 
-多くのプログラミング言語には、WebSocket接続を使用して、データの送受信を行うためのライブラリが用意されています。JavaScript以外の言語で`rippled`のWebSocket APIとの通信を効率良く始めるには、同様な機能を利用している以下の例を参考にしてください。
+多くのプログラミング言語には、WebSocket接続を使用して、データの送受信を行うためのライブラリが用意されています。JavaScript以外の言語で`xrpld`のWebSocket APIとの通信を効率良く始めるには、同様な機能を利用している以下の例を参考にしてください。
 
 {% tabs %}
 

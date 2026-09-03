@@ -19,8 +19,8 @@ This tutorial explains how to send a direct XRP Payment using `xrpl.js` for Java
 ## Prerequisites
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
-<script type="application/javascript" src="/js/tutorials/send-xrp.js"></script>
+<script type="application/javascript" defer src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" defer src="/js/tutorials/send-xrp.js"></script>
 
 To interact with the XRP Ledger, you need to set up a dev environment with the necessary tools. This tutorial provides examples using the following options:
 
@@ -494,7 +494,7 @@ if err := client.Connect(); err != nil {
 
 {% /tabs %}
 
-If you [install `rippled`](../../infrastructure/installation/index.md) yourself, it connects to the production network by default. (You can also [configure it to connect to the test net](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md) instead.) After the server has synced (typically within about 15 minutes of starting it up), you can connect to it locally, which has [various benefits](../../concepts/networks-and-servers/index.md). The following example shows how to connect to a server running the default configuration:
+If you [install `xrpld`](../../infrastructure/installation/index.md) yourself, it connects to the production network by default. (You can also [configure it to connect to the test net](../../infrastructure/configuration/connect-your-xrpld-to-the-xrp-test-net.md) instead.) After the server has synced (typically within about 15 minutes of starting it up), you can connect to it locally, which has [various benefits](../../concepts/networks-and-servers/index.md). The following example shows how to connect to a server running the default configuration:
 
 {% tabs %}
 

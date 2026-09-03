@@ -20,8 +20,8 @@ steps: ['Generate', 'Connect', 'Prepare', 'Sign', 'Submit', 'Wait', 'Check']
 ## 前提条件
 
 <!-- このチュートリアルのインタラクティブ部分のソースコード： -->
-<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
-<script type="application/javascript" src="/js/tutorials/send-xrp.js"></script>
+<script type="application/javascript" defer src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" defer src="/js/tutorials/send-xrp.js"></script>
 
 - このページでは、xrpl.jsライブラリーを使用するJavaScriptの例を紹介します。[xrpl.js入門ガイド](/docs/tutorials/get-started/get-started-javascript.md)に、xrpl.jsを使用してJavaScriptからXRP Ledgerデータにアクセスする方法の説明があります。
 
@@ -233,7 +233,7 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 {% /tabs %}
 
 
-{% admonition type="warning" name="注意" %}APIは、まだ検証されていないレジャーバージョンからの暫定的な結果を返す場合があります。例えば、`rippled` APIの[txメソッド][]を使用した場合は、レスポンス内の`"validated": true`を探して、データが検証済みレジャーバージョンからのものであることを確認してください。検証済みレジャーバージョンからのものではないトランザクション結果は、変わる可能性があります。詳細は、[結果のファイナリティー](../../concepts/transactions/finality-of-results/index.md)をご覧ください。{% /admonition %}
+{% admonition type="warning" name="注意" %}APIは、まだ検証されていないレジャーバージョンからの暫定的な結果を返す場合があります。例えば、`xrpld` APIの[txメソッド][]を使用した場合は、レスポンス内の`"validated": true`を探して、データが検証済みレジャーバージョンからのものであることを確認してください。検証済みレジャーバージョンからのものではないトランザクション結果は、変わる可能性があります。詳細は、[結果のファイナリティー](../../concepts/transactions/finality-of-results/index.md)をご覧ください。{% /admonition %}
 
 {% interactive-block label="Check" steps=$frontmatter.steps %}
 
